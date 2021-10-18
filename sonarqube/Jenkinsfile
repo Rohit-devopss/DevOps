@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        PATH = "$PATH:/opt/apache-maven-3.8.2/bin"
+        PATH = "$PATH:/opt/gradle/gradle-7.2/bin"
     }
     stages{
        stage('GetCode'){
@@ -11,7 +11,7 @@ pipeline{
          }        
        stage('Build'){
             steps{
-                sh 'mvn clean package'
+                sh 'sh ./gradlew clean build'
             }
          }
         stage('SonarQube analysis') {
